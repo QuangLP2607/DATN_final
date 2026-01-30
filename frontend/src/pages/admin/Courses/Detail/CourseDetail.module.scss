@@ -1,0 +1,176 @@
+@use "@/styles" as *;
+
+.cd {
+  padding-top: 50px;
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "cards info"
+    "classes classes";
+  gap: 16px;
+  color: color(text-primary);
+
+  /* Info Cards (thay avatar) */
+  &__cards {
+    grid-area: cards;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & > .cd__card {
+      @include flex(column, center, center, 8px);
+      background-color: color(bg-paper);
+      border: 1px solid color(border-default);
+      border-radius: 12px;
+      padding: 24px;
+      width: 200px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      cursor: default;
+
+      &-icon {
+        font-size: 32px;
+      }
+
+      &-label {
+        font-size: 14px;
+        color: color(text-secondary);
+      }
+
+      &-value {
+        font-size: 28px;
+        font-weight: bold;
+        color: color(primary-solid);
+      }
+    }
+  }
+
+  /* Course Info */
+  &__info {
+    grid-area: info;
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+
+    &-list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 8px 12px;
+        color: color(text-secondary);
+        @include flex(row, space-between, center, 10px);
+        border-bottom: 1px solid color(border-default);
+      }
+    }
+
+    &__title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  }
+
+  /* Classes */
+  &__classes {
+    grid-area: classes;
+
+    &-title {
+      margin-bottom: 16px;
+      font-size: 24px;
+      font-weight: 600;
+      color: color(text-primary);
+    }
+
+    &-none {
+      color: color(text-secondary);
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 220px);
+      justify-content: start;
+      gap: 16px;
+
+      &-item {
+        @include flex(column, start, start, 8px);
+        background-color: color(bg-paper);
+        border: 1px solid color(border-default);
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm);
+        padding: 12px;
+        cursor: pointer;
+
+        &-name {
+          font-weight: bold;
+          color: color(primary-solid);
+        }
+
+        &-date {
+          font-size: 12px;
+          color: color(text-secondary);
+        }
+
+        &-status {
+          font-size: 12px;
+          font-weight: bold;
+          padding: 5px 10px;
+          border-radius: 4px;
+
+          &--active {
+            background: color(success-light);
+            color: color(success);
+          }
+
+          &--upcoming {
+            background: color(info-light);
+            color: color(info);
+          }
+
+          &--finished {
+            background: color(warning-light);
+            color: color(warning);
+          }
+        }
+      }
+    }
+  }
+
+  &__divider {
+    grid-column: 1 / -1;
+    margin: 8px 0;
+  }
+}
+
+/* Responsive */
+@include respond-to(tablet) {
+  .cd {
+    padding-top: 10px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "cards"
+      "info"
+      "classes";
+    justify-items: center;
+    text-align: center;
+
+    &__cards {
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    &__info-list {
+      grid-template-columns: 1fr;
+    }
+
+    &__classes-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

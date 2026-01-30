@@ -1,0 +1,42 @@
+@use "@/styles" as *;
+
+.backButtonWrapper {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  @include flex(row, start, center);
+
+  @include respond-to(tablet) {
+    display: none;
+  }
+}
+
+.backButton {
+  @include size(40px);
+  @include flex(row, center, center);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  &__icon {
+    color: color(text-secondary);
+    @include size(20px);
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: color(text-primary);
+  }
+}

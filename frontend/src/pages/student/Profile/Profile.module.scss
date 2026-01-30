@@ -1,0 +1,214 @@
+@use "@/styles" as *;
+
+/* ================= ROOT ================= */
+
+.profile {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr;
+
+  grid-template-areas:
+    "avatar title"
+    "avatar table";
+
+  column-gap: 80px;
+  row-gap: 0;
+
+  align-items: start;
+
+  @include respond-to(tablet) {
+    column-gap: 40px;
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "title"
+      "avatar"
+      "table";
+    row-gap: 24px;
+    justify-items: center;
+  }
+}
+
+/* ================= TITLE ================= */
+.profile__title {
+  grid-area: title;
+  padding: 14px;
+
+  margin: 0;
+  color: color(text-primary);
+
+  @include respond-to(mobile) {
+    padding: 8px 0;
+    text-align: center;
+  }
+}
+
+/* ================= AVATAR ================= */
+.profile__avatar {
+  grid-area: avatar;
+  padding: 30px 0;
+  width: 220px;
+  @include flex(column, flex-start, center, 16px);
+
+  @include respond-to(mobile) {
+    width: 160px;
+    padding: 0;
+  }
+}
+
+/* ================= TABLE ================= */
+.profile__table {
+  grid-area: table;
+  width: 100%;
+  max-width: 600px;
+
+  @include respond-to(mobile) {
+    max-width: 400px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid color(border-muted);
+    padding: 6px 0;
+
+    &:hover {
+      background: color(bg-muted);
+
+      .profile__edit-btn {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+
+  td {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 4px;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  /* LABEL */
+  td:first-child {
+    width: 35%;
+    font-weight: 500;
+    color: color(text-secondary);
+  }
+
+  /* VALUE */
+  td:nth-child(2) {
+    width: 45%;
+    justify-content: flex-end;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    input,
+    select {
+      @include input-base(small, small);
+    }
+  }
+
+  /* ACTION */
+  td:last-child {
+    width: 20%;
+    justify-content: flex-end;
+  }
+}
+
+/* ================= VALUE ================= */
+
+.profile__value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile__empty {
+  color: color(text-placeholder);
+  font-style: italic;
+}
+
+/* ================= ACTION ================= */
+
+.profile__edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: color(text-secondary);
+
+  opacity: 0;
+  pointer-events: none;
+
+  @include respond-to(mobile) {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.profile__actions {
+  @include flex(row, flex-end, center, 8px);
+}
+
+.profile__action-save {
+  @include button-base(primary, small, small);
+}
+
+.profile__action-cancel {
+  @include button-base(default, small, small);
+}
+
+/* ================= AVATAR BLOCK ================= */
+
+.avatar {
+  position: relative;
+  @include size(220px);
+
+  @include respond-to(mobile) {
+    @include size(160px);
+  }
+
+  &__frame {
+    @include size(100%);
+    border: 1px solid color(border-default);
+    border-radius: 18px;
+    overflow: hidden;
+    background: color(bg-muted);
+  }
+
+  &__image {
+    @include size(100%);
+    object-fit: cover;
+  }
+
+  &__remove {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    padding: 0;
+    @include circle(22px);
+    background: color(error);
+    color: white;
+  }
+
+  &__action {
+    width: 100%;
+    @include button-base(primary, medium, medium);
+  }
+}

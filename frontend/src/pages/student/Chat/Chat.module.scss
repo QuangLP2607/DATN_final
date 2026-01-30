@@ -1,0 +1,29 @@
+@use "@/styles" as *;
+
+.chat-wrapper {
+  max-width: 1280px;
+  @include flex(row, start, center, 16px);
+  max-height: calc(100vh - 180px);
+  min-height: 500px;
+}
+
+.chat {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: color(primary-subtle);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  &__messages {
+    width: 100%;
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &-sidebar {
+    flex: 1;
+  }
+}

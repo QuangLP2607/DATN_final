@@ -1,0 +1,142 @@
+@use "@/styles" as *;
+
+/* ================= MODAL ================= */
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  width: 90vw;
+  max-width: 900px;
+  height: 90vh;
+  border-radius: 12px;
+  border: 1px solid color(border-default);
+  background: color(bg-paper);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+
+  &__media {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    @include flex(row, center, center);
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      background: color(bg-paper);
+    }
+
+    /* DOWNLOAD */
+    &-download {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      @include size(30px);
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      @include size(36px);
+      font-size: 24px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      &.prev {
+        left: 8px;
+      }
+
+      &.next {
+        right: 8px;
+      }
+    }
+
+    &:hover {
+      .nav-btn,
+      .modal__media-download {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* ================= HEADER ================= */
+.header {
+  @include flex(row, space-between, center);
+
+  h3 {
+    margin: 0;
+    color: color(text-primary);
+    font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: color(text-secondary);
+    font-size: 2rem;
+  }
+}
+
+/* ================= THUMBNAILS ================= */
+.modal-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+
+  .modal-thumbnail {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+
+    &.active {
+      border-color: color(primary-active);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use "@/styles" as *;
+
+.header {
+  height: 80px;
+  padding: 0 60px;
+  background-color: color(bg-paper);
+  border-bottom: 1px solid color(border-default);
+  @include flex(row, flex-end, center);
+
+  &__actions {
+    height: 40px;
+    user-select: none;
+    @include flex(row, center, center, 30px);
+  }
+
+  @include respond-to(tablet) {
+    padding: 0 40px;
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 20px;
+  }
+}

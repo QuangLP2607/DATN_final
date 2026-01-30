@@ -1,0 +1,46 @@
+@use "@/styles" as *;
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.video-wrapper {
+  @include flex(column, start, start, 16px);
+  width: 100%;
+  max-width: 800px;
+  padding: 24px;
+  background: color(bg-paper);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+
+  .video {
+    flex: 1;
+    @include size(100%, auto);
+    min-width: 0;
+    aspect-ratio: 16/9;
+    background: color(bg-muted);
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .video-info {
+    width: 100%;
+    @include flex(row, space-between, center, 16px);
+
+    &__title {
+      font-size: 20px;
+      font-weight: bold;
+      color: color(text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__time {
+      font-size: 14px;
+      color: color(text-secondary);
+      // white-space: nowrap;
+    }
+  }
+}

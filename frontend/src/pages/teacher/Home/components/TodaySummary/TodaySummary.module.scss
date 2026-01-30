@@ -1,0 +1,40 @@
+@use "@/styles" as *;
+
+.card {
+  background: color(bg-paper);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+.stats {
+  display: flex;
+  gap: 32px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  strong {
+    font-size: 28px;
+    font-weight: 700;
+    color: color(text-primary);
+  }
+
+  span {
+    font-size: 13px;
+    color: color(text-primary);
+  }
+}
+
+.empty {
+  margin-top: 12px;
+  font-style: italic;
+  color: color(text-primary);
+}

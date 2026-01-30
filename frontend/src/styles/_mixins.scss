@@ -1,0 +1,202 @@
+@use "sass:color";
+@use "@/styles/variables" as *;
+
+// ==================== FLEX ====================
+// A helper mixin to set up flex layouts quickly
+// $direction: row | column
+// $justify: flex-start | center | space-between | space-around ...
+// $align: flex-start | center | stretch ...
+// $gap: spacing between children
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+// ==================== SIZE ====================
+// Sets width and height
+// $height defaults to $width if not provided
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// ==================== CIRCLE ====================
+// Creates a perfect circle with border
+// $size: diameter of the circle
+@mixin circle($size) {
+  @include flex(row, center, center);
+  width: $size;
+  height: $size;
+  aspect-ratio: 1/1;
+  border: 1px solid color(border-default);
+  border-radius: 50%;
+}
+
+// ==================== INPUT BASE ====================
+// Flexible input mixin similar to button-base
+// Supports:
+// - Sizes: small, medium, large
+// - Border-radius: small, medium, round
+// =====================================================
+@mixin input-base($size: medium, $radius: medium) {
+  // ---------------- Default values ----------------
+  $bg: color(bg-paper) !default;
+  $color: color(text-primary) !default;
+  $border: 1px solid color(border-default) !default;
+  $padding: 0.5em 1em !default;
+  $font-size: 1em !default;
+  $br: 0.5em !default;
+
+  // ---------------- Size ----------------
+  @if $size == small {
+    $padding: 0.25em 0.5em;
+    $font-size: 0.875em;
+  } @else if $size == medium {
+    $padding: 0.5em 1em;
+    $font-size: 1em;
+  } @else if $size == large {
+    $padding: 0.75em 1.5em;
+    $font-size: 1.125em;
+  }
+
+  // ---------------- Border-radius ----------------
+  @if $radius == small {
+    $br: 0.25em;
+  } @else if $radius == medium {
+    $br: 0.5em;
+  } @else if $radius == round {
+    $br: 999em;
+  }
+
+  // ---------------- Base Styles ----------------
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $br;
+  background-color: $bg;
+  color: $color;
+  border: $border;
+  &::placeholder {
+    color: color(text-placeholder);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: color(border-focus);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: color(bg-muted);
+  }
+}
+
+// ==================== BUTTON BASE ====================
+// Flexible button mixin using only color() function
+// Supports:
+// - Variants: primary, secondary, default, danger, success
+// - Sizes: small, medium, large
+// - Border-radius: small, medium, round
+// Hover/Active states darken/lighten automatically for better UX
+// =====================================================
+@mixin button-base($variant: primary, $size: medium, $radius: medium) {
+  // ---------------- Default values ----------------
+  $bg: transparent !default;
+  $color: color(text-inverse) !default;
+  $border: none !default;
+  $padding: 0.5em 1em !default;
+  $font-size: 1em !default;
+  $br: 0.5em !default;
+
+  // ---------------- Size ----------------
+  @if $size == small {
+    $padding: 0.25em 0.5em;
+    $font-size: 0.875em;
+  } @else if $size == medium {
+    $padding: 0.5em 1em;
+    $font-size: 1em;
+  } @else if $size == large {
+    $padding: 0.75em 1.5em;
+    $font-size: 1.125em;
+  }
+
+  // ---------------- Border-radius ----------------
+  @if $radius == small {
+    $br: 0.25em;
+  } @else if $radius == medium {
+    $br: 0.5em;
+  } @else if $radius == round {
+    $br: 999em;
+  }
+
+  // ---------------- Variant ----------------
+  @if $variant == primary {
+    $bg: color(primary-solid);
+    $color: color(text-inverse);
+    $border: none;
+  } @else if $variant == secondary {
+    $bg: color(primary-subtle);
+    $color: color(primary-solid);
+    $border: 0.0625em solid color(primary-solid);
+  } @else if $variant == default {
+    $bg: color(bg-muted);
+    $color: color(text-primary);
+    $border: 0.0625em solid color(border-default);
+  } @else if $variant == danger {
+    $bg: color(error);
+    $color: white;
+    $border: none;
+  } @else if $variant == success {
+    $bg: color(success);
+    $color: color(text-inverse);
+    $border: none;
+  }
+
+  // ---------------- Base Styles ----------------
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 0.5em;
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $br;
+  background-color: $bg;
+  color: $color;
+  border: $border;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.05s ease, filter 0.2s ease;
+
+  // ---------------- Hover / Active / Disabled ----------------
+  &:hover:not(:disabled) {
+    filter: brightness(92%);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: none;
+  }
+}
+
+// ==================== RESPOND TO ====================
+@mixin respond-to($device) {
+  @if $device == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $device == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+}

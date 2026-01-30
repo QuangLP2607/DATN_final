@@ -1,0 +1,57 @@
+@use "@/styles" as *;
+
+.next-class-card {
+  background: color(bg-paper);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 260px;
+  font-family: $font-primary;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: color(text-primary);
+  }
+
+  &__class-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: color(primary-solid);
+  }
+
+  &__time-left {
+    font-size: 14px;
+    color: color(text-secondary);
+
+    b {
+      font-weight: 600;
+      color: color(primary-solid);
+    }
+  }
+
+  &__start-time {
+    align-self: flex-end;
+    font-size: 14px;
+    font-weight: 500;
+    color: color(text-secondary);
+    background: color(bg-muted);
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+
+  &--highlight {
+    border-left: 4px solid color(primary-solid);
+    padding-left: 16px;
+  }
+}

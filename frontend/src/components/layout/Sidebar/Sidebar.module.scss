@@ -1,0 +1,209 @@
+@use "@/styles" as *;
+
+/* ================= WRAPPER ================= */
+.sidebar-wrapper {
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  z-index: 100;
+
+  &:hover {
+    .sidebar-toggle {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(0) scale(1);
+      transition-delay: 0s;
+    }
+  }
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  @include size(220px, 100%);
+  background-color: color(bg-paper);
+  border-right: 1px solid color(border-default);
+  overflow-y: auto;
+  will-change: width;
+  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.collapsed {
+    width: 70px;
+  }
+}
+
+/* ================= TOGGLE ================= */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  z-index: 10;
+  @include size(40px);
+  cursor: pointer;
+  background-color: transparent;
+  color: color(text-secondary);
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease,
+    visibility 0s linear 0.25s;
+
+  &:hover {
+    color: color(primary-hover);
+    transform: translateX(6px) scale(1.1);
+  }
+}
+
+/* ================= MENU ================= */
+.sidebar-menu {
+  flex: 1;
+  padding: 0 14px;
+}
+
+/* ================= MENU GROUP ================= */
+.menu-group {
+  width: 100%;
+
+  &__title {
+    position: relative;
+    height: 20px;
+    margin: 0 6px;
+
+    font-size: 11px;
+    color: color(text-secondary);
+    white-space: nowrap;
+
+    span {
+      position: absolute;
+      top: -7px;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    hr {
+      position: absolute;
+      inset: 0;
+      height: 1px;
+      background-color: color(border-default);
+      border: none;
+      transition: opacity 0.18s ease;
+    }
+
+    &.hasTitle hr {
+      display: none;
+    }
+  }
+
+  &__list {
+    margin: 0 0 20px 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* ================= ITEM ================= */
+.menu__item {
+  position: relative;
+  padding-left: calc(var(--level, 0) * 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu__item-wrapper {
+  position: relative;
+  display: flex;
+  border-radius: 6px;
+  color: color(text-primary);
+  overflow: visible;
+
+  &:hover {
+    background: color(primary-subtle);
+    color: color(primary-hover);
+  }
+
+  &.active {
+    background: color(primary-light);
+    color: color(primary-solid);
+  }
+}
+
+.menu__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  flex: 1;
+  padding: 9px;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+  @include flex(row, flex-start, center, 10px);
+
+  &__icon {
+    font-size: 20px;
+  }
+
+  &__content {
+    white-space: nowrap;
+  }
+}
+
+/* ================= COLLAPSED MODE ================= */
+.sidebar.collapsed {
+  .menu-group__title span,
+  .item__content {
+    display: none;
+  }
+
+  .menu-group__title hr {
+    display: block;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@include respond-to(tablet) {
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    height: 100dvh;
+    transition: margin-left 0.3s ease;
+
+    &.collapsed {
+      margin-left: -70px;
+    }
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+/* ================= ANIMATION ================= */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

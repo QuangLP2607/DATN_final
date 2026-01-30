@@ -1,0 +1,72 @@
+@use "@/styles" as *;
+
+.class {
+  @include flex(column, start, center, 16px);
+
+  &__header {
+    width: 100%;
+    @include flex(row, space-between, center, 16px);
+
+    &-actions {
+      @include flex(row, right, center, 16px);
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    &-actions {
+      @include flex(row, center, center, 10px);
+
+      &-btn {
+        @include button-base(default, small, small);
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+
+  &-status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &--active {
+      background: color(warning-light);
+      color: color(warning);
+    }
+
+    &--upcoming {
+      background: color(info-light);
+      color: color(info);
+    }
+
+    &--finished {
+      background: color(success-light);
+      color: color(success);
+    }
+  }
+
+  &__pagination {
+    margin-top: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .student__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .class__table {
+    max-width: 400px;
+    &-actions {
+      justify-content: end;
+    }
+  }
+}

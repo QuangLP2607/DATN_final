@@ -1,0 +1,77 @@
+@use "@/styles" as *;
+
+.uploadWrapper {
+  position: sticky;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+
+/* ================= ITEM ================= */
+
+.uploadItem {
+  @include flex(row, center, center, 5px);
+  gap: 6px;
+  width: 200px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color(bg-default);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================= NAME ================= */
+
+.uploadName {
+  font-size: 13px;
+  font-weight: 500;
+  color: color(text-primary);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ================= PROGRESS ================= */
+
+.progressBar {
+  height: 6px;
+  width: 100%;
+  background: color(border-default);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: color(primary-light);
+  transition: width 0.25s ease;
+}
+
+/* ================= CLOSE BUTTON ================= */
+
+.closeButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+
+  &:hover {
+    color: color(text-primary);
+  }
+}
+
+/* ================= STATUS VARIANTS ================= */
+
+.status-success .progressFill {
+  background: color(success);
+}
+
+.status-error .progressFill {
+  background: color(error);
+}
+
+.status-uploading .progressFill {
+  background: color(primary-light);
+}

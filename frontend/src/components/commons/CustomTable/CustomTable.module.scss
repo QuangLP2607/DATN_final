@@ -1,0 +1,137 @@
+@use "sass:list";
+@use "@/styles" as *;
+
+/* ======================= WRAPPER ======================= */
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
+  border: 1px solid color(primary-solid);
+  background-color: color(bg-paper);
+}
+
+/* ======================= TABLE ======================= */
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+
+  th,
+  td {
+    height: 55px;
+    padding: 12px 16px;
+    vertical-align: middle;
+  }
+
+  th {
+    color: color(primary-hover);
+    background-color: color(primary-subtle);
+    font-weight: bold;
+    border-bottom: 2px solid color(primary-solid);
+  }
+
+  td {
+    border-bottom: 1px solid color(border-muted);
+
+    color: color(text-secondary);
+  }
+}
+
+/* ======================= ALIGN ======================= */
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+/* ======================= CELL ======================= */
+.cell {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: color(text-secondary);
+}
+
+.wrap {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ======================= STATES ======================= */
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: color(bg-muted);
+  }
+}
+
+.empty {
+  text-align: center;
+  padding: 1rem;
+  color: color(text-placeholder);
+}
+
+/* ======================= MOBILE CARD VIEW ======================= */
+@media (max-width: 768px) {
+  .wrapper {
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+  }
+
+  .table {
+    display: block;
+    background: transparent;
+    box-shadow: none;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+      display: block;
+      margin-bottom: 1rem;
+      padding: 12px 16px;
+      border: 1px solid color(border-default);
+      border-radius: 8px;
+      background-color: color(bg-paper);
+    }
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border: none;
+      border-bottom: 1px solid color(border-muted);
+      text-align: left;
+
+      &::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: color(text-primary);
+        flex: 1;
+      }
+    }
+
+    .cell {
+      max-width: 60%;
+      text-align: right;
+    }
+  }
+}

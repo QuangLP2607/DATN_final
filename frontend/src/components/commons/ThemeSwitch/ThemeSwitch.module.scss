@@ -1,0 +1,68 @@
+@use "@/styles" as *;
+
+.theme-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 26px;
+  padding: 0 4px;
+  border-radius: 999px;
+  cursor: pointer;
+
+  border: 0.1em solid color(border-muted);
+  background-color: color(bg-muted);
+
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    font-size: 14px;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease, color 0.2s ease;
+
+    &-sun {
+      left: 6px;
+      color: color(text-secondary);
+    }
+
+    &-moon {
+      right: 6px;
+      color: color(text-placeholder);
+    }
+  }
+
+  .thumb {
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    background-color: color(bg-paper);
+    border: 0.1em solid color(border-default);
+    box-shadow: var(--shadow-xs);
+
+    transition: transform 0.3s ease, background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  &.dark {
+    background-color: color(primary-subtle);
+    border-color: color(primary-light);
+
+    .thumb {
+      background-color: color(primary-solid);
+      border-color: color(primary-light);
+      transform: translateX(24px);
+    }
+
+    .icon-sun {
+      color: color(text-placeholder);
+    }
+
+    .icon-moon {
+      color: color(text-inverse);
+    }
+  }
+}

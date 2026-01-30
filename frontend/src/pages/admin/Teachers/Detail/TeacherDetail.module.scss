@@ -1,0 +1,146 @@
+@use "@/styles" as *;
+
+.sd {
+  padding-top: 50px;
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "profile info"
+    "classes classes";
+  gap: 8px;
+  color: color(text-primary);
+
+  &__profile {
+    grid-area: profile;
+    @include flex(column, start, center, 16px);
+
+    &-avatar {
+      @include circle(200px);
+    }
+  }
+
+  &__avatar-fallback {
+    @include circle(200px);
+    font-size: 72px;
+    color: color(text-secondary);
+    @include flex(center, center, center);
+  }
+
+  &__name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: color(text-primary);
+  }
+
+  &__info {
+    grid-area: info;
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+
+    &-list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 8px 12px;
+        color: color(text-secondary);
+        @include flex(row, space-between, center, 10px);
+      }
+    }
+  }
+
+  &__classes {
+    grid-area: classes;
+
+    &-title {
+      margin-bottom: 16px;
+      color: color(text-primary);
+    }
+
+    &-none {
+      color: color(text-secondary);
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 220px);
+      justify-content: start;
+      gap: 16px;
+
+      &-item {
+        @include flex(column, start, start, 8px);
+        background-color: color(bg-paper);
+        border: 1px solid color(border-default);
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm);
+        padding: 12px;
+        cursor: pointer;
+
+        &-name {
+          font-weight: bold;
+          display: block;
+          color: color(primary-solid);
+        }
+
+        &-status {
+          font-size: 12px;
+          font-weight: bold;
+          padding: 5px 10px;
+          border-radius: 4px;
+
+          &--active {
+            background: color(warning-light);
+            color: color(warning);
+          }
+
+          &--upcoming {
+            background: color(info-light);
+            color: color(info);
+          }
+
+          &--finished {
+            background: color(success-light);
+            color: color(success);
+          }
+        }
+
+        &-course {
+          font-size: 12px;
+          color: color(text-secondary);
+        }
+      }
+    }
+  }
+
+  &__divider {
+    grid-column: 1 / -1;
+    margin: 8px 0;
+  }
+}
+
+@include respond-to(tablet) {
+  .sd {
+    padding-top: 10px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profile"
+      "info"
+      "classes";
+    justify-items: center;
+    text-align: center;
+
+    &__info-list {
+      grid-template-columns: 1fr;
+    }
+
+    &__classes-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

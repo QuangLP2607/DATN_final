@@ -1,0 +1,194 @@
+@use "@/styles" as *;
+
+.exercises {
+  @include flex(column, start, center, 16px);
+
+  /* ================= Header ================= */
+  &__header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "title toolbar add";
+    align-items: center;
+    gap: 16px;
+
+    .title {
+      grid-area: title;
+    }
+
+    .toolbar {
+      grid-area: toolbar;
+      display: flex;
+      gap: 16px;
+      justify-content: right;
+      flex-wrap: wrap;
+
+      @include respond-to(mobile) {
+        &__search {
+          flex: 1;
+        }
+      }
+    }
+
+    .add-btn {
+      @include button-base(primary, medium, small);
+      grid-area: add;
+      justify-self: end;
+    }
+
+    // Mobile
+    @include respond-to(mobile) {
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "title add"
+        "toolbar toolbar";
+      gap: 8px;
+
+      .toolbar {
+        justify-content: center;
+      }
+    }
+  }
+
+  /* ================= Empty ================= */
+  &__empty {
+    padding: 60px 0;
+    color: color(text-secondary);
+    @include flex(column, center, center, 12px);
+
+    &-icon {
+      font-size: 56px;
+    }
+
+    &-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: color(text-placeholder);
+    }
+  }
+
+  /* ================= Content ================= */
+  &__content {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  /* ================= Pagination ================= */
+  &__pagination {
+    width: 100%;
+    margin-top: auto;
+  }
+}
+
+/* ================= Card ================= */
+.quiz-card {
+  position: relative;
+  border-radius: 12px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .thumb {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    &-img {
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    &-fallback {
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      display: grid;
+      place-items: center;
+    }
+
+    &-text {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      user-select: none;
+    }
+  }
+
+  .status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+
+    &.draft {
+      color: color(info);
+      background-color: color(info-light);
+      border: 1px solid color(info);
+    }
+    &.published {
+      color: color(success);
+      background-color: color(success-light);
+      border: 1px solid color(success);
+    }
+    &.closed {
+      color: color(error);
+      background-color: color(error-light);
+      border: 1px solid color(error);
+    }
+  }
+
+  .info {
+    padding: 8px 10px;
+    display: flex;
+    gap: 8px;
+
+    &-left {
+      @include flex(column, start, start, 10px);
+
+      .meta {
+        display: flex;
+        gap: 16px;
+        font-size: 12px;
+        color: color(text-secondary);
+
+        &-item {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+
+    &-right {
+      margin-left: auto;
+      @include flex(row, center, center, 5px);
+
+      .btn {
+        @include button-base(default, small, small);
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+}

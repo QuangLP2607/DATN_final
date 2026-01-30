@@ -1,0 +1,26 @@
+@use "@/styles" as *;
+
+/* ================= LOGO ================= */
+.sidebar-logo {
+  height: 80px;
+  cursor: pointer;
+  @include flex(row, center, center, 2px);
+  transition: background-color 0.2s ease;
+
+  &__img {
+    height: 30%;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+
+    &.is-large,
+    &.is-small {
+      opacity: 1;
+    }
+  }
+}
+
+/* ================= COLLAPSED MODE ================= */
+.sidebar-logo.collapsed {
+  .sidebar-logo__img.is-large {
+    display: none;
+  }
+}

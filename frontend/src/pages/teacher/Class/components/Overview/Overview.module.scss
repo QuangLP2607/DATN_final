@@ -1,0 +1,90 @@
+@use "@/styles" as *;
+
+.card {
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: color(bg-paper);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+
+  &__header {
+    margin-bottom: 16px;
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: color(text-primary);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      color: color(text-secondary);
+      font-size: 14px;
+    }
+
+    .progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .progress-bar {
+        flex: 1;
+        height: 10px;
+        border-radius: 6px;
+        background-color: color(border-muted);
+        overflow: hidden;
+
+        &__fill {
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            color(primary-light),
+            color(primary-solid)
+          );
+          transition: width 0.3s ease;
+        }
+      }
+
+      .progress-text {
+        width: 40px;
+        font-size: 12px;
+        color: color(text-primary);
+        text-align: right;
+      }
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background-color: color(primary-solid);
+      color: color(text-inverse);
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: color(primary-hover);
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+
+    &__header h2 {
+      font-size: 20px;
+    }
+  }
+}

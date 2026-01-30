@@ -1,0 +1,163 @@
+@use "@/styles" as *;
+
+/* ================= CHAT WRAPPER ================= */
+.chat-wrapper {
+  @include flex(row, start, center, 16px);
+  max-height: calc(100vh - 180px);
+  min-height: 500px;
+}
+
+/* ================= CHAT BOX ================= */
+.chat {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: color(primary-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================= MESSAGES ================= */
+.chat__messages {
+  width: 100%;
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* ================= PREVIEW BAR ================= */
+.preview-bar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid color(border-default);
+  overflow-x: auto;
+}
+
+.preview-item {
+  position: relative;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: color(bg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img,
+  video {
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  span {
+    width: 120px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  button {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: color(error);
+    color: color(text-inverse);
+    border: none;
+    cursor: pointer;
+    @include circle(18px);
+  }
+}
+
+/* ================= INPUT ================= */
+.chat__input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: color(bg-paper);
+  border-top: 1px solid color(border-default);
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: color(bg-muted);
+    padding: 10px 14px;
+    border-radius: 20px;
+  }
+
+  button {
+    background: color(primary-solid);
+    color: color(text-inverse);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* ================= UPLOAD BUTTON ================= */
+.upload-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color(primary-subtle);
+  color: color(primary-solid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ================= DELETED ================= */
+.deleted {
+  font-size: 13px;
+  font-style: italic;
+  color: color(text-placeholder);
+}
+
+/* ================= SIDEBAR ================= */
+.chat-sidebar {
+  flex: 1;
+  background: color(bg-paper);
+  border-left: 1px solid color(border-default);
+  border-radius: 12px;
+  padding: 12px;
+  overflow-y: auto;
+
+  h4 {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .sidebar-item {
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

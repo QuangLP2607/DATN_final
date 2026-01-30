@@ -1,0 +1,120 @@
+@use "@/styles" as *;
+
+/* ================= Modal ================= */
+.modal {
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  border-radius: 8px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.18s ease-out;
+}
+
+/* ================= Header ================= */
+.modal__header {
+  @include flex(row, space-between, center);
+
+  &-title {
+    margin: 0;
+    font-size: 20px;
+    color: color(text-primary);
+  }
+
+  &-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: color(text-secondary);
+    font-size: 20px;
+  }
+}
+
+/* ================= Body ================= */
+.modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+
+  /* ================= Field ================= */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    color: color(text-primary);
+
+    &-label {
+      font-size: 12px;
+    }
+
+    &-input {
+      @include input-base(medium, small);
+    }
+  }
+
+  /* ================= Thumbnail ================= */
+  .thumbnail {
+    flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    border: solid 1px color(border-default);
+    background-color: color(bg-muted);
+    @include flex(row, center, center);
+
+    &-placeholder {
+      font-size: 50px;
+    }
+
+    &-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+/* ================= Actions ================= */
+.modal__actions {
+  flex-shrink: 0;
+  @include flex(row, flex-end, center, 10px);
+  margin-top: 12px;
+
+  .action-btn {
+    &--cancel {
+      @include button-base(default, medium, small);
+    }
+
+    &--save {
+      @include button-base(primary, medium, small);
+    }
+  }
+}
+
+/* ================= Animation ================= */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

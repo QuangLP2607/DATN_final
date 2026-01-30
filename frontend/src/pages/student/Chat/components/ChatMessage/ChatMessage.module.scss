@@ -1,0 +1,97 @@
+@use "@/styles" as *;
+
+.message {
+  display: flex;
+  margin: 4px 0;
+
+  &:hover .message__actions {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &--me {
+    justify-content: flex-end;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  &__bubble-wrapper {
+    position: relative;
+    overflow: visible;
+  }
+
+  &__actions {
+    visibility: hidden;
+    opacity: 0;
+
+    &:has([data-open="true"]) {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  &__content {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 2px 0;
+    color: color(text-secondary);
+    background-color: color(bg-paper);
+    border-radius: 4px 16px 16px 4px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    &.me {
+      border-radius: 16px 4px 4px 16px;
+      background-color: #4a90e2;
+      color: #fff;
+    }
+
+    &.first {
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    &.last {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+  }
+
+  &__deleted {
+    font-style: italic;
+    color: color(text-placeholder);
+  }
+
+  &__avatar {
+    margin-right: 8px;
+    @include size(30px);
+
+    img {
+      @include circle(30px);
+    }
+  }
+
+  &__sender-name {
+    font-size: 12px;
+    color: color(text-secondary);
+    margin-bottom: 2px;
+  }
+}
+
+/* ================= ACTION WRAPPER (KHÔNG STYLE GÌ THÊM) ================= */
+
+/*
+[data-message-actions]
+- KHÔNG cần position
+- KHÔNG cần display
+- Chỉ dùng làm hook hover
+- Style thật nằm trong MessageActions.module.scss
+*/

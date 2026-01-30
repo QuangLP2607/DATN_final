@@ -1,0 +1,122 @@
+@use "sass:map";
+
+// ======================================================
+// GREEN PALETTE (RAW – KHÔNG DÙNG TRỰC TIẾP)
+// ======================================================
+$green: (
+  100: #f1fff0,
+  200: #e1ffda,
+  300: #c8ffbc,
+  400: #8fd694,
+  500: #5dbb63,
+  600: #40a737,
+  // brand core
+  700: #377631,
+  800: #2f7a2f,
+  900: #1f5f1f,
+);
+
+// ======================================================
+// LIGHT THEME (SEMANTIC MAPPING)
+// ======================================================
+$theme-light: (
+  // Text
+  text-primary: #303030,
+  text-secondary: #5a5a5a,
+  text-placeholder: #8c8c8c,
+  text-inverse: #ffffff,
+
+  // Background
+  bg-default: #f9f9f9,
+  bg-paper: #ffffff,
+  bg-muted: #f2f2f2,
+  bg-overlay: rgba(0, 0, 0, 0.5),
+  // Border
+  border-default: #d9d9d9,
+  border-muted: #d6d6d8,
+  border-focus: map.get($green, 600),
+  // Primary (GREEN)
+  primary-solid: map.get($green, 600),
+  primary-hover: map.get($green, 700),
+  primary-active: map.get($green, 800),
+  primary-light: map.get($green, 300),
+  primary-subtle: map.get($green, 200),
+  // Semantic
+  success: map.get($green, 600),
+  success-light: map.get($green, 200),
+  warning: #ffb526,
+  warning-light: #fff3cd,
+  error: #ff2626,
+  error-light: #f8d7da,
+  info: #2650ff,
+  info-light: #cfe2ff
+);
+
+// ======================================================
+// DARK THEME
+// ======================================================
+$theme-dark: (
+  text-primary: #e0e0e0,
+  text-secondary: #b3b3b3,
+  text-placeholder: #999999,
+  text-inverse: #000000,
+
+  bg-default: #121212,
+  bg-paper: #1e1e1e,
+  bg-muted: #2a2a2a,
+  bg-overlay: rgba(0, 0, 0, 0.7),
+  border-default: #333333,
+  border-muted: #444444,
+  border-focus: map.get($green, 500),
+  primary-solid: map.get($green, 600),
+  primary-hover: map.get($green, 400),
+  primary-active: map.get($green, 300),
+  primary-light: rgba(64, 196, 99, 0.2),
+  primary-subtle: rgba(64, 196, 99, 0.12),
+  success: map.get($green, 500),
+  success-light: rgba(64, 196, 99, 0.2),
+  warning: #ffb526,
+  warning-light: rgba(255, 181, 38, 0.2),
+  error: #ff2626,
+  error-light: rgba(255, 38, 38, 0.2),
+  info: #2650ff,
+  info-light: rgba(38, 80, 255, 0.2),
+);
+
+// ======================================================
+// SHADOW
+// ======================================================
+$shadow-light: (
+  sm: 0 2px 4px rgba(0, 0, 0, 0.1),
+  md: 0 2px 8px rgba(0, 0, 0, 0.1),
+  lg: 0 2px 12px rgba(0, 0, 0, 0.1),
+);
+
+$shadow-dark: (
+  sm: 0 2px 4px rgba(0, 0, 0, 0.5),
+  md: 0 2px 8px rgba(0, 0, 0, 0.5),
+  lg: 0 2px 12px rgba(0, 0, 0, 0.5),
+);
+
+// ======================================================
+// APPLY THEME → CSS VARIABLES
+// ======================================================
+:root {
+  @each $key, $value in $theme-light {
+    --color-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $shadow-light {
+    --shadow-#{$key}: #{$value};
+  }
+}
+
+html[data-theme="dark"] {
+  @each $key, $value in $theme-dark {
+    --color-#{$key}: #{$value};
+  }
+
+  @each $key, $value in $shadow-dark {
+    --shadow-#{$key}: #{$value};
+  }
+}

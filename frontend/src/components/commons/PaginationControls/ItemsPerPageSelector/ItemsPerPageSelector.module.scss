@@ -1,0 +1,103 @@
+@use "@/styles" as *;
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+  color: color(text-secondary);
+  @include flex(row, center, center, 5px);
+
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-4px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ---------- LABEL ---------- */
+  &__label {
+    font-size: 14px;
+    color: color(text-secondary);
+  }
+
+  /* ---------- CONTROL ---------- */
+  &__control {
+    padding: 8px;
+    width: 70px;
+    cursor: pointer;
+    user-select: none;
+
+    border-radius: 4px;
+    border: 1px solid color(border-default);
+    background-color: color(bg-paper);
+
+    color: inherit;
+    @include flex(row, space-between, center, 6px);
+  }
+
+  /* ---------- VALUE ---------- */
+  &__value {
+    color: inherit;
+  }
+
+  /* ---------- ARROW ---------- */
+  &__arrow {
+    display: inline-flex;
+    color: currentColor;
+    transition: transform 0.2s ease;
+
+    svg {
+      display: block;
+      font-size: 16px;
+    }
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* ---------- MENU ---------- */
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 10;
+    width: 100%;
+
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid color(border-default);
+    background-color: color(bg-paper);
+    box-shadow: var(--shadow-sm);
+
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  &.up &__menu {
+    top: auto;
+    bottom: calc(100% + 4px);
+  }
+
+  /* ---------- ITEM ---------- */
+  &__item {
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    color: color(text-primary);
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover {
+      background-color: color(bg-muted);
+    }
+
+    &.selected {
+      background-color: color(primary-subtle);
+    }
+  }
+}

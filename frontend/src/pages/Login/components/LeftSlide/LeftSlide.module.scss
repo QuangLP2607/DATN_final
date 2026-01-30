@@ -1,0 +1,83 @@
+@use "@/styles" as *;
+
+.slide {
+  @include size(100%);
+  @include flex(column, center, center);
+  padding: 50px 0;
+
+  background: color(primary-subtle);
+
+  &__container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    @include flex(column, center, center, 20px);
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    user-select: none;
+  }
+
+  &__image-wrapper {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include flex(column, center, center, 12px);
+
+    &-jp {
+      color: color(text-primary);
+      font-family: $font-secondary;
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    &-sub {
+      font-size: 14px;
+      color: color(text-secondary);
+    }
+  }
+
+  &__dots {
+    @include flex(row, center, center, 10px);
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+
+    &-btn {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+
+      background-color: color(border-muted);
+      transition: all 0.25s ease;
+
+      &:hover {
+        background-color: color(text-secondary);
+      }
+
+      &.active {
+        width: 20px;
+        background-color: color(primary-solid);
+      }
+    }
+  }
+}

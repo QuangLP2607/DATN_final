@@ -1,0 +1,130 @@
+@use "@/styles" as *;
+
+/* ================= PREVIEW BAR ================= */
+.preview-bar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: color(bg-muted);
+  border-top: 1px solid color(border-default);
+  overflow-x: auto;
+}
+
+.preview-item {
+  position: relative;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid color(border-default);
+  background: color(bg-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img,
+  video {
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .file {
+    padding: 5px;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+
+    &-icon {
+      font-size: 30px;
+      color: color(text-placeholder);
+    }
+
+    &-name {
+      max-width: 100px;
+      color: color(text-secondary);
+      font-size: 12px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    @include button-base(danger);
+    padding: 0;
+    @include circle(18px);
+  }
+}
+
+/* ================= INPUT ================= */
+.chat__input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: color(bg-paper);
+  border-top: 1px solid color(border-default);
+
+  .upload-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color(primary-subtle);
+    color: color(primary-solid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .message-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: color(bg-muted);
+    padding: 10px 14px;
+    border-radius: 20px;
+  }
+
+  .send-btn {
+    background: color(primary-solid);
+    color: color(text-inverse);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* ================= EMOJI PICKER ================= */
+.emoji-container {
+  position: relative;
+
+  .emoji-btn {
+    @include circle(30px);
+    background: color(primary-subtle);
+    color: color(primary-solid);
+  }
+
+  .emoji-wrapper {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    right: 0;
+
+    h2 {
+      height: 20px;
+      font-size: 12px;
+    }
+  }
+}

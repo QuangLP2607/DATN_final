@@ -1,0 +1,32 @@
+@use "@/styles" as *;
+
+.tooltip-portal {
+  background: color(text-primary);
+  color: color(bg-paper);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -100%) scale(0.9);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 9999;
+
+  &[data-position="top"] {
+    transform: translate(-50%, -100%) scale(1);
+  }
+  &[data-position="bottom"] {
+    transform: translate(-50%, 0) scale(1);
+  }
+  &[data-position="left"] {
+    transform: translate(-100%, -50%) scale(1);
+  }
+  &[data-position="right"] {
+    transform: translate(0, -50%) scale(1);
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}

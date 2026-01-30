@@ -1,0 +1,120 @@
+@use "@/styles" as *;
+
+.class__header {
+  margin-bottom: 10px;
+}
+.class-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+.class-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid color(border-muted);
+  border-radius: 10px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+
+  .class-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        margin: 0;
+        color: color(text-primary);
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .student-count {
+        color: color(text-secondary);
+        font-size: 14px;
+        white-space: nowrap;
+      }
+    }
+
+    .dates {
+      color: color(text-secondary);
+      font-size: 14px;
+    }
+
+    .progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .progress-bar {
+        flex: 1;
+        height: 8px;
+        border-radius: 8px;
+        background-color: color(border-muted);
+        overflow: hidden;
+
+        &__fill {
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            color(primary-light),
+            color(primary-solid)
+          );
+          transition: width 0.3s;
+        }
+      }
+
+      .progress-text {
+        width: 40px;
+        color: color(text-primary);
+        font-size: 12px;
+        text-align: right;
+      }
+    }
+
+    .student-list {
+      color: color(text-secondary);
+      list-style: disc;
+      margin-top: 8px;
+      padding-left: 16px;
+
+      li {
+        font-size: 13px;
+      }
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: all 0.2s;
+      cursor: pointer;
+      margin-top: 6px;
+
+      &.ghost {
+        border: 1px solid color(primary-solid);
+        background-color: transparent;
+        color: color(primary-solid);
+
+        &:hover {
+          background-color: color(primary-solid);
+          color: color(text-inverse);
+        }
+      }
+    }
+  }
+}

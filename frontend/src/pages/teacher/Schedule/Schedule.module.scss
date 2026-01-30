@@ -1,0 +1,16 @@
+@use "@/styles" as *;
+
+.schedule {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+
+  @include respond-to(tablet) {
+    font-size: 0.8rem;
+  }
+
+  @include respond-to(mobile) {
+    justify-content: start;
+    font-size: 0.7rem;
+  }
+}

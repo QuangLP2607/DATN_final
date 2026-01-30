@@ -1,0 +1,137 @@
+@use "@/styles" as *;
+
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  width: 350px;
+  padding: 5px 5px 10px 5px;
+  border: 1px solid;
+  border-radius: 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s;
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 5px;
+
+  backdrop-filter: blur(6px);
+
+  &.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    box-shadow: var(--shadow-sm);
+  }
+
+  &.success {
+    background-color: color(success-light);
+    color: color(success);
+    border-color: color(success);
+
+    .close {
+      color: color(success);
+      transition: color 0.2s;
+    }
+
+    .progress {
+      background-color: color(success);
+    }
+  }
+
+  &.error {
+    background-color: color(error-light);
+    color: color(error);
+    border-color: color(error);
+
+    .close {
+      color: color(error);
+      transition: color 0.2s;
+    }
+
+    .progress {
+      background-color: color(error);
+    }
+  }
+
+  &.warning {
+    background-color: color(warning-light);
+    color: color(warning);
+    border-color: color(warning);
+
+    .close {
+      color: color(warning);
+      transition: color 0.2s;
+    }
+
+    .progress {
+      background-color: color(warning);
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    animation: icon-bounce 0.4s ease;
+  }
+
+  &-title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &-content {
+    font-size: 14px;
+  }
+
+  .close {
+    @include size(24px);
+    background: none;
+    font-size: 24px;
+  }
+
+  .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    animation-name: progress-bar;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    border-radius: 0 0 8px 8px;
+    transition: width 0.05s linear;
+  }
+}
+
+// ======================================================
+// ANIMATIONS
+// ======================================================
+@keyframes progress-bar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes icon-bounce {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

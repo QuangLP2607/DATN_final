@@ -1,0 +1,78 @@
+@use "@/styles" as *;
+
+.teacher {
+  @include flex(column, start, center, 16px);
+
+  &__header {
+    width: 100%;
+    @include flex(row, space-between, center, 16px);
+
+    &-actions {
+      @include flex(row, right, center, 16px);
+    }
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  &-status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &--active {
+      background: color(success-light);
+      color: color(success);
+    }
+
+    &--inactive {
+      background: color(warning-light);
+      color: color(warning);
+    }
+
+    &--pending {
+      background: color(info-light);
+      color: color(info);
+    }
+  }
+
+  &__pagination-controls {
+    width: 100%;
+    margin-top: auto;
+  }
+}
+
+.row-actions {
+  @include flex(row, center, center, 10px);
+
+  .row-action-button {
+    @include button-base(default, small, small);
+    aspect-ratio: 1 / 1;
+
+    // &--view {
+    // }
+  }
+}
+
+@media (max-width: 768px) {
+  .teacher {
+    max-width: 480px;
+    &__header {
+      flex-direction: column;
+    }
+
+    &__filters {
+      width: 100%;
+    }
+  }
+
+  .row-actions {
+    justify-content: end;
+  }
+}

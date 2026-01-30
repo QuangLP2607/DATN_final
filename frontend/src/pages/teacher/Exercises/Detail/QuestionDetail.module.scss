@@ -1,0 +1,145 @@
+@use "@/styles" as *;
+
+.question-detail {
+  height: 100%;
+  @include flex(row, center, stretch, 12px);
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+  }
+
+  /* ================= GRID ================= */
+
+  &__grid {
+    margin-top: 40px;
+    padding: 10px;
+    width: 250px;
+    background-color: color(bg-paper);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    align-content: start;
+  }
+
+  &__grid-item {
+    @include flex();
+    @include circle(30px);
+    cursor: pointer;
+    transition: 0.2s;
+
+    &.info-light {
+      background: color(info-light);
+      border-color: color(info);
+      color: color(info);
+    }
+
+    &.success-light {
+      background: color(success-light);
+      border-color: color(success);
+      color: color(success);
+    }
+
+    &.warning-light {
+      background: color(warning-light);
+      border-color: color(warning);
+      color: color(warning);
+    }
+
+    &.active {
+      outline-offset: 2px;
+      outline: 3px solid color(error);
+    }
+  }
+
+  .grid-add {
+    @include size(30px);
+    @include button-base(default);
+    padding: 0;
+    border-style: dashed;
+  }
+
+  /* ================= CONTENT ================= */
+
+  &__content {
+    flex: 1;
+    padding: 10px;
+    background-color: color(bg-paper);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    @include flex(column, flex-start, stretch, 10px);
+  }
+
+  .question-input {
+    width: 100%;
+    min-height: 80px;
+    @include input-base();
+  }
+
+  /* ================= OPTIONS ================= */
+
+  .options {
+    @include flex(column, flex-start, stretch, 8px);
+  }
+
+  .option-row {
+    @include flex(row, flex-start, center, 8px);
+  }
+
+  .option-input {
+    flex: 1;
+    @include input-base();
+  }
+
+  .option-remove {
+    @include circle(30px);
+    background-color: transparent;
+    color: color(error);
+    font-size: 20px;
+    border: none;
+  }
+
+  .add-option {
+    align-self: flex-start;
+    margin-top: 4px;
+    @include button-base(secondary, small);
+  }
+
+  .radio-icon {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0;
+
+    &.active {
+      color: #3b82f6;
+    }
+
+    &:hover {
+      color: #2563eb;
+    }
+  }
+
+  /* ================= ACTIONS ================= */
+
+  .actions {
+    margin-top: 24px;
+    @include flex(row, space-between, center);
+  }
+
+  .danger {
+    @include button-base(danger);
+  }
+
+  .primary {
+    @include button-base(primary);
+  }
+
+  .add-btn {
+    margin-top: 16px;
+    @include button-base(secondary);
+  }
+}

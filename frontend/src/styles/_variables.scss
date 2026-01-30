@@ -1,0 +1,53 @@
+@use "sass:list";
+
+// ======================================================
+// FONT
+// ======================================================
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Noto Sans JP", sans-serif;
+
+// ======================================================
+// COLOR TOKENS (DEV ĐƯỢC PHÉP DÙNG)
+// ======================================================
+$colors: (
+  // Text
+  text-primary,
+  text-secondary,
+  text-placeholder,
+  text-inverse,
+  // Background
+  bg-default,
+  bg-paper,
+  bg-muted,
+  bg-overlay,
+  // Border
+  border-default,
+  border-muted,
+  border-focus,
+  // Primary (GREEN SYSTEM)
+  primary-solid,
+  primary-hover,
+  primary-active,
+  primary-light,
+  primary-subtle,
+  // Semantic
+  success,
+  success-light,
+  warning,
+  warning-light,
+  error,
+  error-light,
+  info,
+  info-light
+);
+
+// ======================================================
+// HELPER
+// ======================================================
+@function color($name) {
+  @if list.index($colors, $name) == null {
+    @error "❌ Color token `#{$name}` không tồn tại hoặc không được phép dùng";
+  }
+
+  @return var(--color-#{$name});
+}

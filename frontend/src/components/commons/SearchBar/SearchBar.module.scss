@@ -1,0 +1,37 @@
+@use "@/styles" as *;
+
+.search-bar {
+  @include input-base(medium, small);
+  border: 1px solid color(border-default);
+
+  &.active {
+    border-color: color(primary-solid);
+  }
+
+  &__input {
+    min-width: 0;
+    flex: 1;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    color: color(text-placeholder);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: color(primary-solid);
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    .search-bar.active & {
+      color: color(primary-solid);
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@use "@/styles" as *;
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  column-gap: 24px;
+  row-gap: 16px;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+}
+
+/* ===== Main column ===== */
+.home-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== Sidebar column ===== */
+.home-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== Optional: Responsive ===== */
+@media (max-width: 1024px) {
+  .home-side {
+    order: 2;
+  }
+}

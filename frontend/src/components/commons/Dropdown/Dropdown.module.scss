@@ -1,0 +1,93 @@
+@use "@/styles" as *;
+
+.dropdown {
+  position: relative;
+  @include flex(row, center, center, 5px);
+
+  &-wrapper {
+    @include flex(row, start, center, 10px);
+  }
+
+  &-label {
+    white-space: nowrap;
+  }
+
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-4px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ================= CONTROL ================= */
+  &__control {
+    padding: 8px 12px;
+    min-width: 140px;
+    border: 1px solid color(border-default);
+    border-radius: 4px;
+    background-color: color(bg-paper);
+    color: color(text-primary);
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: border-color 0.2s ease;
+
+    &.open {
+      border-color: color(border-focus);
+    }
+
+    /* Arrow */
+    &-arrow {
+      display: inline-flex;
+      transition: transform 0.25s ease;
+      transform-origin: center;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  /* ================= MENU ================= */
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 10;
+
+    width: 100%;
+    padding: 4px;
+    border: 1px solid color(border-default);
+    border-radius: 4px;
+    background-color: color(bg-paper);
+    box-shadow: var(--shadow-sm);
+
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  /* ================= ITEM ================= */
+  &__item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: color(text-primary);
+
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: color(bg-muted);
+    }
+
+    &.selected {
+      background-color: color(primary-subtle);
+    }
+  }
+}

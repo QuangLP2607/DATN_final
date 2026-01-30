@@ -1,0 +1,54 @@
+{
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "comment-empty-line-before": null,
+    "comment-no-empty": null,
+
+    "order/order": [
+      "custom-properties",
+      "declarations",
+      {
+        "type": "at-rule"
+      },
+      {
+        "type": "rule"
+      }
+    ],
+
+    "order/properties-order": [
+      [
+        "position",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "z-index",
+        "display",
+        "flex",
+        "flex-direction",
+        "align-items",
+        "justify-content",
+        "width",
+        "height",
+        "margin",
+        "padding",
+        "border",
+        "border-radius",
+        "background",
+        "background-color",
+        "color",
+        "font-size",
+        "font-weight",
+        "text-align",
+        "white-space",
+        "transition",
+        "transform",
+        "cursor",
+        "opacity"
+      ],
+      {
+        "unspecified": "bottomAlphabetical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+@use "@/styles" as *;
+
+.actions {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  z-index: 20;
+
+  &--left {
+    right: calc(100% + 4px);
+    flex-direction: row-reverse;
+  }
+
+  &--right {
+    left: calc(100% + 4px);
+  }
+
+  .action {
+    position: relative;
+
+    &-btn {
+      @include button-base(default, small, small);
+      @include circle(28px);
+    }
+
+    &-open {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: color(bg-paper);
+      border: 1px solid color(border-default);
+      box-shadow: var(--shadow-sm);
+      z-index: 30;
+    }
+
+    &-menu {
+      padding: 4px;
+      border-radius: 8px;
+      min-width: 120px;
+
+      @include flex(column, start, stretch, 2px);
+
+      button {
+        @include button-base(default, medium, small);
+        width: 100%;
+        border: none;
+      }
+    }
+
+    &-emoji {
+      padding: 4px 6px;
+      border-radius: 999px;
+      display: flex;
+
+      .emoji-item {
+        font-size: 20px;
+        background: transparent;
+        transition: transform 0.15s ease;
+        padding: 0;
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+}

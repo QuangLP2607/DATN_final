@@ -1,0 +1,97 @@
+@use "@/styles" as *;
+
+/* ================= CARD ================= */
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-sm);
+
+  &__header {
+    margin-bottom: 16px;
+
+    h2 {
+      color: color(text-primary);
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ================= WEEK MINI ================= */
+.week {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+
+  &__day {
+    position: relative;
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    background-color: color(bg-muted);
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    color: color(text-secondary);
+    font-size: 13px;
+
+    &:hover {
+      background-color: color(primary-subtle);
+    }
+
+    &.today {
+      border: 1px solid color(primary-solid);
+      font-weight: 600;
+      color: color(text-primary);
+    }
+
+    &.active {
+      background-color: color(primary-light);
+      color: color(primary-solid);
+    }
+
+    &.hasClass .dot {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: color(primary-solid);
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* ================= SCHEDULE LIST ================= */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .schedule-item {
+    padding: 10px 12px;
+    border: 1px solid color(border-muted);
+    border-radius: 8px;
+    background-color: color(bg-default);
+
+    h4 {
+      margin: 0 0 4px 0;
+      color: color(text-primary);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    span {
+      color: color(text-secondary);
+      font-size: 13px;
+    }
+  }
+
+  .no-schedule {
+    color: color(text-placeholder);
+    font-size: 14px;
+    text-align: center;
+  }
+}

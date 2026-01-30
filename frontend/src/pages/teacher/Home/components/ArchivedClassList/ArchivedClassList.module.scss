@@ -1,0 +1,111 @@
+@use "@/styles" as *;
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-sm);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: color(text-secondary);
+    }
+
+    .count {
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: color(border-default);
+      color: color(text-primary);
+    }
+  }
+}
+
+.class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.class-item {
+  border-radius: 10px;
+  background: color(bg-default);
+  transition: all 0.2s ease;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.class-info {
+  padding: 14px;
+  display: flex;
+  // flex-direction: column;
+  gap: 6px;
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: color(text-primary);
+  }
+}
+
+.info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-right {
+  flex-shrink: 0;
+}
+
+.dates {
+  font-size: 13px;
+  color: color(text-primary);
+}
+
+.student-count {
+  font-size: 13px;
+  color: color(text-primary);
+}
+
+.btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  font-size: 13px;
+
+  &.ghost {
+    background: transparent;
+    border: 1px dashed color(border-default);
+    color: color(text-secondary);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    // &:hover {
+    //   border-color: color(primary-solid);
+    //   color: color(primary-solid);
+    //   background: color(primary-soft);
+    // }
+  }
+}
+
+.load-more {
+  margin-top: 10px;
+  &-btn {
+    @include button-base(default, medium, medium);
+    width: 100%;
+  }
+}

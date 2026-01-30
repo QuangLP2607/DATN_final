@@ -1,0 +1,49 @@
+@use "@/styles" as *;
+
+.pagination {
+  @include flex(row, center, center, 8px);
+
+  /* ======================= BUTTON (prev / next) ======================= */
+  &__btn {
+    @include button-base(default, medium, small);
+    padding: 0;
+    @include size(32px);
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  /* ======================= PAGES ======================= */
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__page {
+    @include button-base(default, medium, small);
+    padding: 0;
+    @include size(32px);
+
+    &:hover {
+      background-color: color(primary-subtle);
+      color: color(primary-solid);
+      border-color: color(primary-solid);
+    }
+
+    &.active {
+      background-color: color(primary-light);
+      color: color(primary-solid);
+      border-color: color(primary-solid);
+    }
+  }
+
+  /* ======================= ELLIPSIS ======================= */
+  &__ellipsis {
+    padding: 0 4px;
+    color: color(text-secondary);
+    font-size: 14px;
+  }
+}

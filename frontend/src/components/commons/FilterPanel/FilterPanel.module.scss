@@ -1,0 +1,49 @@
+@use "@/styles" as *;
+@use "sass:list";
+
+.filter-panel {
+  position: relative;
+
+  &__toggle {
+    @include button-base(primary, medium, small);
+  }
+
+  &__content {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    padding: 12px;
+    background: color(bg-default);
+    border-radius: 8px;
+    border: 1px solid color(border-default);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+
+    &::before {
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      z-index: -100px;
+      width: 20px;
+      height: 8px;
+      background: color(border-default);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      content: "";
+    }
+  }
+
+  &__actions {
+    @include flex(row, flex-end, center, 8px);
+    margin-top: 12px;
+
+    .btn {
+      &--ghost {
+        @include button-base(default, medium, small);
+      }
+
+      &--primary {
+        @include button-base(primary, medium, small);
+      }
+    }
+  }
+}

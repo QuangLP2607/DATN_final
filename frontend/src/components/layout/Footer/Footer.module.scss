@@ -1,0 +1,26 @@
+@use "@/styles" as *;
+
+.footer {
+  width: 100%;
+  padding: 16px 0;
+  background: color(bg-paper);
+  color: color(text-secondary);
+  text-align: center;
+  border-top: 1px solid color(border-default);
+  @include flex(row, center, center);
+
+  &__content {
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    @include flex(row, center, center, 8px);
+  }
+
+  &__icon {
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: rotate(-10deg) scale(1.15);
+    }
+  }
+}

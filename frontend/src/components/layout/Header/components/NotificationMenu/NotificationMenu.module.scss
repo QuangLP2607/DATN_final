@@ -1,0 +1,73 @@
+@use "@/styles" as *;
+
+.notification {
+  position: relative;
+  background-color: color(bg-default);
+  cursor: pointer;
+  @include circle(40px);
+
+  &-icon {
+    color: color(text-secondary);
+    font-size: 20px;
+  }
+
+  &-dot {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background-color: color(error);
+    color: white;
+    font-size: 8px;
+    @include circle(16px);
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 1;
+    width: 260px;
+    padding: 1px;
+    border: 1px solid color(border-default);
+    border-radius: 4px;
+    background-color: color(bg-paper);
+
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 4px;
+      color: color(text-primary);
+      cursor: pointer;
+      gap: 10px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: color(bg-muted);
+      }
+    }
+
+    &--notify {
+      min-width: 260px;
+    }
+
+    &-desc {
+      color: color(text-secondary);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* Triangle decoration */
+    &::before {
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      z-index: -100;
+      width: 20px;
+      height: 8px;
+      background: color(border-default);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      content: "";
+    }
+  }
+}

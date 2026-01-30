@@ -1,0 +1,81 @@
+// .overview {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   height: 100%;
+//   padding: 20px;
+//   background-color: #f9f9f9;
+//   box-sizing: border-box;
+// }
+
+// .start-call {
+//   padding: 12px 24px;
+//   border: none;
+//   border-radius: 6px;
+//   background-color: #4caf50;
+//   color: white;
+//   font-size: 16px;
+//   font-weight: 500;
+//   transition: background-color 0.2s ease;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: #45a049;
+//   }
+
+//   &:active {
+//     transform: scale(0.98);
+//   }
+// }
+
+// .roomWrapper {
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   height: 80vh;
+//   max-width: 1200px;
+// }
+
+// .backButton {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   z-index: 10;
+//   padding: 8px 16px;
+//   border: none;
+//   border-radius: 6px;
+//   background-color: #2196f3;
+//   color: white;
+//   font-size: 14px;
+//   transition: background-color 0.2s ease;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: #1976d2;
+//   }
+
+//   &:active {
+//     transform: scale(0.95);
+//   }
+// }
+
+// .loading {
+//   display: flex;
+//   flex: 1;
+//   align-items: center;
+//   justify-content: center;
+//   color: #555;
+//   font-size: 18px;
+//   font-weight: 500;
+// }
+
+// iframe {
+//   flex: 1;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 8px;
+//   background-color: #000;
+// }

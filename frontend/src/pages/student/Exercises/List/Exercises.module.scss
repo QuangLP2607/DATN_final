@@ -1,0 +1,118 @@
+@use "@/styles" as *;
+
+.exercises {
+  @include flex(column, start, center, 16px);
+  width: 100%;
+
+  &__header {
+    width: 100%;
+    @include flex(row, space-between, center, 16px);
+    margin-bottom: 16px;
+
+    &-toolbar {
+      @include flex(row, flex-start, center, 16px);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  &__pagination {
+    width: 100%;
+    margin-top: auto;
+    @include flex(row, center, center);
+  }
+}
+
+/* ================= Card ================= */
+.quiz-card {
+  position: relative;
+  border-radius: 12px;
+  background-color: color(bg-paper);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .thumb {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    &-img {
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    &-fallback {
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      display: grid;
+      place-items: center;
+    }
+
+    &-text {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: uppercase;
+      user-select: none;
+    }
+  }
+
+  .info {
+    padding: 8px 10px;
+    display: flex;
+    gap: 8px;
+
+    &-left {
+      @include flex(column, start, start, 10px);
+
+      .meta {
+        display: flex;
+        gap: 16px;
+        font-size: 12px;
+        color: color(text-secondary);
+
+        &-item {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+      }
+    }
+
+    &-right {
+      margin-left: auto;
+      @include flex(row, center, center, 5px);
+
+      .btn {
+        @include button-base(default, small, small);
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use "@/styles" as *;
+
+.paginationControls {
+  @include flex(row, space-between, center);
+  @include size(100%, 40px);
+
+  .center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include respond-to(tablet) {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+    gap: 16px;
+
+    .center {
+      justify-content: center;
+    }
+
+    .right {
+      width: 100%;
+    }
+  }
+
+  @include respond-to(mobile) {
+    .right {
+      display: none;
+    }
+  }
+}

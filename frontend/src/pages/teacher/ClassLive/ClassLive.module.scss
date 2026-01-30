@@ -1,0 +1,28 @@
+@use "@/styles" as *;
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.room-wrapper {
+  @include flex(column, center, center, 16px);
+  width: 100%;
+  max-width: 900px;
+  background: color(bg-paper);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+
+  iframe {
+    @include size(100%);
+    border: none;
+    border-radius: 12px;
+  }
+
+  aspect-ratio: 16 / 9;
+
+  @media (max-width: 768px) {
+    height: 70vh;
+    aspect-ratio: 9 / 16;
+  }
+}

@@ -1,0 +1,66 @@
+@use "@/styles" as *;
+
+.course {
+  @include flex(column, start, center, 16px);
+
+  &__header {
+    width: 100%;
+    @include flex(row, space-between, center, 16px);
+
+    &-actions {
+      @include flex(row, right, center, 16px);
+
+      .add-btn {
+        @include button-base(primary, medium, small);
+      }
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    &-actions {
+      @include flex(row, center, center, 10px);
+
+      &-btn {
+        @include button-base(default, small, small);
+        aspect-ratio: 1/1;
+      }
+    }
+  }
+
+  &-status {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &--active {
+      background: color(success-light);
+      color: color(success);
+    }
+
+    &--inactive {
+      background: color(error-light);
+      color: color(error);
+    }
+  }
+
+  &__pagination {
+    margin-top: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .course__table {
+    max-width: 400px;
+    &-actions {
+      justify-content: end;
+    }
+  }
+}
